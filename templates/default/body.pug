@@ -12,12 +12,9 @@
   subtotal = (subtotal/100).toFixed(2);
   tax_percent = tax_percent || 0;
   
-  discount_percent = 0;
-  discount = 0;
-  
   if(discount_percent != null)
   {
-    discount_percent = -discount_percent;
+    discount_percent = discount_percent || 0;
   }
   
   if(discount_amount != null)
@@ -162,7 +159,7 @@ html.no-js
             | #{subtotal}
             if !currency_position_before
               | #{currency_symbol}
-        if(discount < 0)     
+        if(discount)     
           .row
             .small-10.columns.upper #{label_discount}
             .small-2.columns.num
@@ -171,7 +168,7 @@ html.no-js
               | #{discount}
               if !currency_position_before
                 | #{currency_symbol}
-        if(discount_percent < 0)
+        if(discount_percent)
         .row
           .small-10.columns.upper #{label_discount}
           .small-2.columns.num #{discount_percent}%
