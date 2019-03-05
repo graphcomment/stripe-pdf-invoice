@@ -100,13 +100,14 @@ html.no-js
                 .row
                   .columns
                     | #{client_company_country}
-            if client_vat_number
-              .row
-                  .columns.component-title
-                    | #{label_company_vat_number}
-              .row
-                .columns
-                  | #{client_vat_number}        
+        .row.white-small                    
+          if (client_vat_number != null)
+            .row
+              .columns.component-title
+                | #{label_company_vat_number}
+            .row
+              .columns
+                | #{client_vat_number}       
           .small-offset-4.small-4.columns.total
             .row
               .columns.num
