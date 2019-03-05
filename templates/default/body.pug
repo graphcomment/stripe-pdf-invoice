@@ -15,14 +15,14 @@
   discount_percent = 0;
   discount = 0;
   
-  if(discount.coupon.percent_off != null)
+  if(discount_percent != null)
   {
-    discount_percent = -discount.coupon.percent_off;
+    discount_percent = -discount_percent;
   }
   
-  if(discount.coupon.amount_off != null)
+  if(discount_amount != null)
   {
-    discount = -(discount.coupon.amount_off/100).toFixed(2) || 0;
+    discount = -(discount_amount/100).toFixed(2) || 0;
   }
 
   lines.data.forEach(line => {
