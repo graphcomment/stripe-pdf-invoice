@@ -149,9 +149,14 @@ html.no-js
             | #{subtotal}
             if !currency_position_before
               | #{currency_symbol}
-        .row	
-          .small-10.columns.upper #{label_discount}	
-          .small-2.columns.num #{discount}
+        .row
+          .small-10.columns.upper #{label_discount}
+          .small-2.columns.num
+            if currency_position_before
+              | #{currency_symbol}
+            | #{discount}
+            if !currency_position_before
+              | #{currency_symbol}
         .row.total-line.upper
           .small-10.columns #{label_total}
           .small-2.columns.num
