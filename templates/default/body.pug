@@ -90,6 +90,10 @@ html.no-js
                 .row
                   .columns
                     | #{client_company_country}
+            if client_vat_number        
+              .row
+                .columns
+                  | #{client_vat_number}        
           .small-offset-4.small-4.columns.total
             .row
               .columns.num
@@ -142,9 +146,6 @@ html.no-js
             | #{subtotal}
             if !currency_position_before
               | #{currency_symbol}
-        .row
-          .small-10.columns.upper #{label_vat}
-          .small-2.columns.num #{tax_percent}%
         .row.total-line.upper
           .small-10.columns #{label_total}
           .small-2.columns.num
