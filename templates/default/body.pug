@@ -21,6 +21,11 @@
   {
     discount_amount = -(discount_amount/100).toFixed(2) || 0;
   }
+  
+  if (client_vat_number != null)
+  {
+    client_vat_number_active = true;
+  }
 
   lines.data.forEach(line => {
     line.price = (line.type == 'subscription') ? (line.plan.amount/100).toFixed(2) : (line.amount/100).toFixed(2);
@@ -89,13 +94,13 @@ html.no-js
             .row
               .columns
                 | #{client_company_name}
-            if (client_vat_number != null)
-            .row
-              .columns.component-title
-                | #{label_company_vat_number}
-            .row
-              .columns
-                | #{client_vat_number}    
+            if (client_vat_number_active)
+              .row
+                .columns.component-title
+                  | #{label_company_vat_number}
+              .row
+                .columns
+                  | #{client_vat_number}    
             .row.address
               .columns
                 .row
@@ -169,17 +174,17 @@ html.no-js
               if !currency_position_before
                 | #{currency_symbol}
         if(discount_percent)
-        .row
-          .small-10.columns.upper #{label_discount}
-          .small-2.columns.num #{discount_percent}%
-        .row.total-line.upper
-          .small-10.columns #{label_total}
-          .small-2.columns.num
-            if currency_position_before
-              | #{currency_symbol}
-            | #{total}
-            if !currency_position_before
-              | #{currency_symbol}
+          .row
+            .small-10.columns.upper #{label_discount}
+            .small-2.columns.num #{discount_percent}%
+          .row.total-line.upper
+            .small-10.columns #{label_total}
+            .small-2.columns.num
+              if currency_position_before
+                | #{currency_symbol}
+              | #{total}
+              if !currency_position_before
+                | #{currency_symbol}
     .row.footer
       .columns
         .row
