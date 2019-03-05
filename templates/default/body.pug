@@ -89,6 +89,13 @@ html.no-js
             .row
               .columns
                 | #{client_company_name}
+            if (client_vat_number != null)
+            .row
+              .columns.component-title
+                | #{label_company_vat_number}
+            .row
+              .columns
+                | #{client_vat_number}    
             .row.address
               .columns
                 .row
@@ -99,14 +106,7 @@ html.no-js
                     | #{client_company_zipcode} #{client_company_city}
                 .row
                   .columns
-                    | #{client_company_country}                  
-                if (client_vat_number != null)
-                  .row
-                    .columns.component-title
-                      | #{label_company_vat_number}
-                  .row
-                    .columns
-                      | #{client_vat_number}       
+                    | #{client_company_country}                         
           .small-offset-4.small-4.columns.total
             .row
               .columns.num
