@@ -177,14 +177,14 @@ html.no-js
           .row
             .small-10.columns.upper #{label_discount}
             .small-2.columns.num #{discount_percent}%
-          .row.total-line.upper
-            .small-10.columns #{label_total}
-            .small-2.columns.num
-              if currency_position_before
-                | #{currency_symbol}
-              | #{total}
-              if !currency_position_before
-                | #{currency_symbol}
+        .row.total-line.upper
+          .small-10.columns #{label_total}
+          .small-2.columns.num
+            if currency_position_before
+              | #{currency_symbol}
+            | #{total}
+            if !currency_position_before
+              | #{currency_symbol}
     .row.footer
       .columns
         .row
