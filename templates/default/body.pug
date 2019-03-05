@@ -11,7 +11,19 @@
   total = (total/100).toFixed(2);
   subtotal = (subtotal/100).toFixed(2);
   tax_percent = tax_percent || 0;
-  discount = (discount/100).toFixed(2) || 0;
+  
+  discount_percent = 0;
+  discount = 0;
+  
+  if(discount.coupon.percent_off != null)
+  {
+    discount_percent = -discount.coupon.percent_off;
+  }
+  
+  if(discount.coupon.amount_off != null)
+  {
+    discount = -(discount.coupon.amount_off/100).toFixed(2) || 0;
+  }
 
   lines.data.forEach(line => {
     line.price = (line.type == 'subscription') ? (line.plan.amount/100).toFixed(2) : (line.amount/100).toFixed(2);
@@ -150,14 +162,19 @@ html.no-js
             | #{subtotal}
             if !currency_position_before
               | #{currency_symbol}
+        if(discount < 0)     
+          .row
+            .small-10.columns.upper #{label_discount}
+            .small-2.columns.num
+              if currency_position_before
+                | #{currency_symbol}
+              | #{discount}
+              if !currency_position_before
+                | #{currency_symbol}
+        if(discount_percent < 0)
         .row
           .small-10.columns.upper #{label_discount}
-          .small-2.columns.num
-            if currency_position_before
-              | #{currency_symbol}
-            | #{discount}
-            if !currency_position_before
-              | #{currency_symbol}
+          .small-2.columns.num #{discount_percent}%
         .row.total-line.upper
           .small-10.columns #{label_total}
           .small-2.columns.num
