@@ -90,7 +90,10 @@ html.no-js
                 .row
                   .columns
                     | #{client_company_country}
-            if client_vat_number        
+            if client_vat_number
+              .row
+                  .columns.component-title
+                    | #{label_company_vat_number}
               .row
                 .columns
                   | #{client_vat_number}        
